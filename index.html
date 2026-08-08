@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Oveja Negra Pamplona — como, en casa</title>
+<meta name="description" content="Gastrobar de pintxos y carta en Pamplona. Como, en casa.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,500;0,9..144,600;1,9..144,400;1,9..144,500&family=Manrope:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg: #16140f;
+    --surface: #1e1b15;
+    --surface-2: #262219;
+    --text: #f2ede2;
+    --muted: #a89e8c;
+    --gold: #ca2b7b;
+    --wine: #7a2333;
+    --line: rgba(242,237,226,0.12);
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    background:var(--bg);
+    color:var(--text);
+    font-family:'Manrope',sans-serif;
+    font-weight:400;
+    line-height:1.6;
+    overflow-x:hidden;
+  }
+  h1,h2,h3,.display{
+    font-family:'Fraunces',serif;
+    font-weight:500;
+    letter-spacing:-0.01em;
+  }
+  a{color:inherit;text-decoration:none;}
+  img{max-width:100%;display:block;}
+  .wrap{max-width:1120px;margin:0 auto;padding:0 28px;}
+
+  /* texture */
+  body::before{
+    content:"";
+    position:fixed; inset:0;
+    background-image:
+      radial-gradient(rgba(242,237,226,0.035) 1px, transparent 1px);
+    background-size: 3px 3px;
+    pointer-events:none;
+    z-index:1;
+    opacity:.6;
+  }
+
+  /* NAV */
+  header{
+    position:fixed; top:0; left:0; right:0;
+    z-index:100;
+    background:rgba(22,20,15,0.85);
+    backdrop-filter:blur(10px);
+    border-bottom:1px solid var(--line);
+  }
+  nav{
+    display:flex; align-items:center; justify-content:space-between;
+    padding:18px 28px;
+    max-width:1120px; margin:0 auto;
+  }
+  .mark{
+    display:flex; align-items:center; gap:10px;
+    font-family:'Fraunces',serif; font-weight:600; font-size:1.05rem;
+    letter-spacing:0.02em;
+  }
+  .mark svg{width:26px;height:26px;flex-shrink:0;}
+  .navlinks{display:flex; gap:34px; font-size:0.86rem; letter-spacing:0.04em; text-transform:uppercase;}
+  .navlinks a{opacity:.82; transition:opacity .2s, color .2s;}
+  .navlinks a:hover{opacity:1; color:var(--gold);}
+  .navtel{
+    font-size:0.86rem; color:var(--gold); letter-spacing:0.02em; white-space:nowrap;
+  }
+  .burger{display:none; background:none; border:none; color:var(--text); font-size:1.5rem; cursor:pointer;}
+
+  @media (max-width:780px){
+    .navlinks{
+      position:fixed; top:64px; left:0; right:0;
+      flex-direction:column; gap:0;
+      background:var(--surface);
+      border-bottom:1px solid var(--line);
+      max-height:0; overflow:hidden;
+      transition:max-height .35s ease;
+    }
+    .navlinks.open{max-height:340px;}
+    .navlinks a{padding:16px 28px; border-bottom:1px solid var(--line); opacity:1;}
+    .navtel{display:none;}
+    .burger{display:block;}
+  }
+
+  /* HERO */
+  .hero{
+    position:relative;
+    min-height:100svh;
+    display:flex; flex-direction:column; justify-content:center;
+    padding:140px 28px 80px;
+    background:
+      linear-gradient(180deg, rgba(22,20,15,0.35), rgba(22,20,15,0.92) 78%),
+      url('https://ovejanegracomoencasa.com/wp-content/uploads/2015/07/cropped-YOL-FO-Foto-int-08.jpg') center/cover no-repeat;
+  }
+  .hero-inner{max-width:1120px; margin:0 auto; width:100%;}
+  .eyebrow{
+    color:var(--gold); font-size:0.82rem; letter-spacing:0.18em; text-transform:uppercase;
+    margin-bottom:22px; display:flex; align-items:center; gap:12px;
+  }
+  .eyebrow::before{content:"";width:34px;height:1px;background:var(--gold);display:inline-block;}
+  .hero h1{
+    font-size:clamp(3.2rem, 9vw, 7rem);
+    line-height:0.95;
+    font-weight:500;
+    max-width:900px;
+  }
+  .hero h1 em{font-style:italic; color:var(--gold); font-weight:400;}
+  .hero-tag{
+    margin-top:26px; font-size:1.1rem; color:var(--muted); max-width:480px;
+    font-family:'Fraunces',serif; font-style:italic; font-weight:400;
+  }
+  .hero-cta{margin-top:44px; display:flex; gap:16px; flex-wrap:wrap;}
+  .btn{
+    display:inline-block; padding:15px 30px; font-size:0.86rem; letter-spacing:0.06em;
+    text-transform:uppercase; border-radius:2px; transition:all .25s ease; border:1px solid transparent;
+  }
+  .btn-solid{background:var(--gold); color:#16140f; font-weight:600;}
+  .btn-solid:hover{background:#e0428f;}
+  .btn-outline{border-color:var(--line); color:var(--text);}
+  .btn-outline:hover{border-color:var(--gold); color:var(--gold);}
+
+  .hero-foot{
+    margin-top:70px; display:flex; justify-content:space-between; align-items:flex-end;
+    font-size:0.78rem; color:var(--muted); letter-spacing:0.03em; flex-wrap:wrap; gap:16px;
+  }
+
+  /* SECTION LABELS */
+  .section-head{margin-bottom:56px;}
+  .section-head .eyebrow{margin-bottom:16px;}
+  .section-head h2{font-size:clamp(2.1rem,4.5vw,3rem); font-weight:500;}
+  section{position:relative; z-index:2;}
+
+  /* ABOUT */
+  .about{padding:130px 0 100px; border-top:1px solid var(--line);}
+  .about-grid{display:grid; grid-template-columns:1fr 1fr; gap:60px; align-items:start;}
+  .about p{font-size:1.05rem; color:var(--muted); max-width:46ch;}
+  .about p + p{margin-top:18px;}
+  .about-quote{
+    font-family:'Fraunces',serif; font-style:italic; font-size:1.6rem; font-weight:400;
+    line-height:1.4; color:var(--text); border-left:2px solid var(--gold); padding-left:24px;
+  }
+  @media (max-width:820px){.about-grid{grid-template-columns:1fr; gap:34px;}}
+
+  /* MENU */
+  .menu{padding:100px 0 120px; background:var(--surface); border-top:1px solid var(--line);}
+  .menu-note{
+    color:var(--muted); font-size:0.92rem; margin-bottom:60px; max-width:52ch;
+    font-family:'Fraunces',serif; font-style:italic;
+  }
+  .menu-categories{display:grid; grid-template-columns:1fr 1fr; gap:64px 70px;}
+  @media (max-width:820px){.menu-categories{grid-template-columns:1fr; gap:52px;}}
+  .cat-title{
+    font-size:0.8rem; letter-spacing:0.16em; text-transform:uppercase; color:var(--gold);
+    margin-bottom:22px; padding-bottom:14px; border-bottom:1px solid var(--line);
+  }
+  .dish{
+    display:flex; justify-content:space-between; align-items:baseline; gap:16px;
+    padding:13px 0; border-bottom:1px dashed var(--line);
+  }
+  .dish:last-child{border-bottom:none;}
+  .dish-name{font-size:0.98rem; letter-spacing:0.01em;}
+  .dish-price{font-family:'Fraunces',serif; font-style:italic; color:var(--gold); white-space:nowrap; font-size:1rem;}
+  .menu-footer-note{
+    margin-top:56px; text-align:center; font-size:0.82rem; letter-spacing:0.08em;
+    text-transform:uppercase; color:var(--muted); padding-top:28px; border-top:1px solid var(--line);
+  }
+
+  /* HORARIO / UBICACION */
+  .info{padding:120px 0; border-top:1px solid var(--line);}
+  .info-grid{display:grid; grid-template-columns:0.9fr 1.1fr; gap:70px;}
+  @media (max-width:900px){.info-grid{grid-template-columns:1fr; gap:44px;}}
+  .schedule-row{
+    display:flex; justify-content:space-between; padding:14px 0; border-bottom:1px solid var(--line);
+    font-size:0.95rem;
+  }
+  .schedule-row span:first-child{color:var(--muted);}
+  .schedule-row .closed{color:var(--wine); font-family:'Fraunces',serif; font-style:italic;}
+  .map-frame{
+    width:100%; aspect-ratio:4/3.4; border:1px solid var(--line); filter:grayscale(0.4) contrast(1.05);
+  }
+  .addr-block{margin-top:30px;}
+  .addr-block .eyebrow{margin-bottom:10px;}
+  .addr-block p{color:var(--muted); font-size:0.98rem;}
+
+  /* CONTACT / FOOTER */
+  .contact{padding:120px 0 60px; background:var(--surface); border-top:1px solid var(--line);}
+  .contact-grid{display:grid; grid-template-columns:1.1fr 0.9fr; gap:60px;}
+  @media (max-width:820px){.contact-grid{grid-template-columns:1fr; gap:40px;}}
+  .contact h2{font-size:clamp(2.4rem,5vw,3.4rem); max-width:11ch; line-height:1.05;}
+  .contact-links{margin-top:30px; display:flex; flex-direction:column; gap:4px;}
+  .contact-links a{
+    font-family:'Fraunces',serif; font-style:italic; font-size:1.4rem;
+    padding:10px 0; border-bottom:1px solid var(--line); transition:color .2s;
+  }
+  .contact-links a:hover{color:var(--gold);}
+  .social-row{display:flex; gap:22px; margin-top:36px;}
+  .social-row a{
+    font-size:0.82rem; letter-spacing:0.06em; text-transform:uppercase; color:var(--muted);
+    border-bottom:1px solid transparent;
+  }
+  .social-row a:hover{color:var(--gold); border-color:var(--gold);}
+  footer{
+    margin-top:90px; padding-top:26px; border-top:1px solid var(--line);
+    display:flex; justify-content:space-between; flex-wrap:wrap; gap:12px;
+    font-size:0.76rem; color:var(--muted); letter-spacing:0.03em;
+  }
+
+  ::selection{background:var(--gold); color:#16140f;}
+</style>
+</head>
+<body>
+
+<header>
+  <nav>
+    <div class="mark">
+      <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2">
+        <path d="M14 20c-3 0-5 2-5 5s2 5 5 5" />
+        <ellipse cx="24" cy="24" rx="12" ry="9" />
+        <circle cx="18" cy="22" r="1.4" fill="currentColor"/>
+        <path d="M14 18c-2-3-1-7 2-8M34 18c2-3 1-7-2-8" />
+        <path d="M16 33c0 4-1 6-2 7M32 33c0 4 1 6 2 7" />
+      </svg>
+      Oveja&nbsp;Negra
+    </div>
+    <button class="burger" onclick="document.querySelector('.navlinks').classList.toggle('open')">☰</button>
+    <div class="navlinks">
+      <a href="#carta">Carta</a>
+      <a href="#nosotros">Nosotros</a>
+      <a href="#horario">Horario</a>
+      <a href="#contacto">Contacto</a>
+    </div>
+    <a class="navtel" href="tel:+34948591266">948 591 266</a>
+  </nav>
+</header>
+
+<section class="hero">
+  <div class="hero-inner">
+    <div class="eyebrow">Pamplona · Navarra</div>
+    <h1>Oveja<br><em>Negra</em></h1>
+    <p class="hero-tag">como, en casa — pintxos y carta de temporada en el corazón de Pamplona.</p>
+    <div class="hero-cta">
+      <a href="#carta" class="btn btn-solid">Ver la carta</a>
+      <a href="#contacto" class="btn btn-outline">Reservar mesa</a>
+    </div>
+    <div class="hero-foot">
+      <span>Calle Irunlarrea 13B, 31008 Pamplona</span>
+      <span>Cerrado los martes</span>
+    </div>
+  </div>
+</section>
+
+<section class="about" id="nosotros">
+  <div class="wrap about-grid">
+    <div>
+      <div class="eyebrow">Quiénes somos</div>
+      <h2 style="font-size:2rem; margin-bottom:22px;">La oveja que se sale del rebaño</h2>
+      <p>En Oveja Negra cocinamos con la misma calma con la que se come en casa, pero con la técnica de quien no deja nada al azar. Producto de mercado, guiños a la cocina tradicional navarra y algún atrevimiento que nos gusta llamar nuestro.</p>
+      <p>Raciones para compartir, platos de cuchara, carnes y pescados con carácter propio. Todo pensado para quedarse un rato largo en la mesa.</p>
+    </div>
+    <p class="about-quote">"Todos nuestros productos se pueden encargar también para llevar."</p>
+  </div>
+</section>
+
+<section class="menu" id="carta">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="eyebrow">La carta</div>
+      <h2>Para todos, raciones</h2>
+      <p class="menu-note">Una carta pensada para compartir de principio a fin — de las raciones al postre.</p>
+    </div>
+
+    <div class="menu-categories">
+      <div>
+        <div class="cat-title">Para todos · Raciones</div>
+        <div class="dish"><span class="dish-name">Jamón ibérico con pan rústico y tomate natural</span><span class="dish-price">23€</span></div>
+        <div class="dish"><span class="dish-name">Nuestra selección de quesos</span><span class="dish-price">14€</span></div>
+        <div class="dish"><span class="dish-name">Anchoas y boquerones</span><span class="dish-price">10€</span></div>
+        <div class="dish"><span class="dish-name">Ensaladilla rusa</span><span class="dish-price">13€</span></div>
+        <div class="dish"><span class="dish-name">Patatas bravas</span><span class="dish-price">8€</span></div>
+        <div class="dish"><span class="dish-name">Rabas de chipirón con pimientos de Padrón</span><span class="dish-price">13€</span></div>
+      </div>
+
+      <div>
+        <div class="cat-title">Entrantes</div>
+        <div class="dish"><span class="dish-name">Plato de cuchara</span><span class="dish-price">14€</span></div>
+        <div class="dish"><span class="dish-name">Ensalada de tomate, ventresca de bonito y piparras verdes fritas</span><span class="dish-price">18€</span></div>
+        <div class="dish"><span class="dish-name">Risotto de setas y hongos</span><span class="dish-price">16€</span></div>
+        <div class="dish"><span class="dish-name">Ensalada templada de pollo y langostinos</span><span class="dish-price">12€</span></div>
+        <div class="dish"><span class="dish-name">Ensalada Oveja Negra mixta</span><span class="dish-price">10€</span></div>
+        <div class="dish"><span class="dish-name">Huevos 63° con parmentier, foie, hongos y trufa</span><span class="dish-price">18€</span></div>
+      </div>
+
+      <div>
+        <div class="cat-title">Carnes</div>
+        <div class="dish"><span class="dish-name">Ragout de ternera en pan brioche, teriyaki y encurtidos</span><span class="dish-price">19€</span></div>
+        <div class="dish"><span class="dish-name">Magret de pato confitado, ras el hanout</span><span class="dish-price">19€</span></div>
+        <div class="dish"><span class="dish-name">Callos, patas y morros</span><span class="dish-price">21€</span></div>
+        <div class="dish"><span class="dish-name">Manitas de cerdo rellenas de jamón ibérico</span><span class="dish-price">22€</span></div>
+        <div class="dish"><span class="dish-name">Costilla de cerdo confitada, salsa barbacoa</span><span class="dish-price">18€</span></div>
+        <div class="dish"><span class="dish-name">Chilindrón con salsa tzatziki</span><span class="dish-price">23€</span></div>
+      </div>
+
+      <div>
+        <div class="cat-title">Pescados</div>
+        <div class="dish"><span class="dish-name">Calamar a la plancha, cebolla pochada y tomate concassé</span><span class="dish-price">20€</span></div>
+        <div class="dish"><span class="dish-name">Ajoarriero</span><span class="dish-price">22€</span></div>
+        <div class="dish"><span class="dish-name">Salmón sous vide, salsa tártara y encurtidos</span><span class="dish-price">22€</span></div>
+        <div class="dish"><span class="dish-name">Tataki de atún con piperrada y wakame</span><span class="dish-price">18€</span></div>
+        <div class="dish"><span class="dish-name">Ventresca de atún con pak choi y vinagreta de piparras</span><span class="dish-price">20€</span></div>
+      </div>
+
+      <div>
+        <div class="cat-title">Entre pan</div>
+        <div class="dish"><span class="dish-name">Hamburguesa de ternera de Baztán</span><span class="dish-price">15€</span></div>
+      </div>
+
+      <div>
+        <div class="cat-title">Algo dulce</div>
+        <div class="dish"><span class="dish-name">Flan de crema irlandesa con helado de café</span><span class="dish-price">8€</span></div>
+        <div class="dish"><span class="dish-name">Sorbete de limón con gelatina de mojito</span><span class="dish-price">8€</span></div>
+        <div class="dish"><span class="dish-name">Tarta de queso con helado de violetas</span><span class="dish-price">8€</span></div>
+        <div class="dish"><span class="dish-name">Goxua de Pamplona</span><span class="dish-price">8€</span></div>
+        <div class="dish"><span class="dish-name">Brownie de chocolate, helado de naranja sanguina y pasión</span><span class="dish-price">8€</span></div>
+        <div class="dish"><span class="dish-name">Torrija, crema inglesa y helado</span><span class="dish-price">8€</span></div>
+      </div>
+    </div>
+
+    <div class="menu-footer-note">Todos nuestros productos se pueden encargar para llevar</div>
+  </div>
+</section>
+
+<section class="info" id="horario">
+  <div class="wrap info-grid">
+    <div>
+      <div class="eyebrow">Horario</div>
+      <h2 style="font-size:1.9rem; margin-bottom:30px;">Cuándo encontrarnos</h2>
+      <div class="schedule-row"><span>Lunes</span><span>12:00–17:00</span></div>
+      <div class="schedule-row"><span>Martes</span><span class="closed">Cerrado</span></div>
+      <div class="schedule-row"><span>Miércoles</span><span>12:00–17:00</span></div>
+      <div class="schedule-row"><span>Jueves a sábado</span><span>12:00–17:00 · 20:00–00:00</span></div>
+      <div class="schedule-row"><span>Domingo</span><span>12:00–17:00</span></div>
+
+      <div class="addr-block">
+        <div class="eyebrow">Dirección</div>
+        <p>Calle Irunlarrea 13B<br>31008 Pamplona, Navarra</p>
+      </div>
+    </div>
+    <iframe class="map-frame" loading="lazy" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d731.7746958893273!2d-1.6729189233286488!3d42.80739851721933!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0000000000000000%3A0x1c78dbe84ea478b5!2sOveja+Negra+Pamplona!5e0!3m2!1ses!2ses!4v1430756124526" allowfullscreen></iframe>
+  </div>
+</section>
+
+<section class="contact" id="contacto">
+  <div class="wrap">
+    <div class="contact-grid">
+      <div>
+        <h2>Reserva tu mesa</h2>
+        <p style="color:var(--muted); margin-top:16px; max-width:40ch;">Llámanos o escríbenos y te guardamos sitio. Para grupos, mejor con antelación.</p>
+        <div class="contact-links">
+          <a href="tel:+34948591266">948 591 266</a>
+          <a href="https://es-es.facebook.com/ovejanegrapamplona/" target="_blank" rel="noopener">Facebook</a>
+          <a href="https://www.instagram.com/ovejanegrapamplona/" target="_blank" rel="noopener">Instagram</a>
+        </div>
+      </div>
+      <div>
+        <div class="eyebrow">Síguenos</div>
+        <p style="color:var(--muted); margin-top:14px; max-width:34ch;">Fotos del día a día, nuevos platos de temporada y algún que otro secreto de cocina.</p>
+        <div class="social-row">
+          <a href="https://es-es.facebook.com/ovejanegrapamplona/" target="_blank" rel="noopener">Facebook →</a>
+          <a href="https://www.instagram.com/ovejanegrapamplona/" target="_blank" rel="noopener">Instagram →</a>
+        </div>
+      </div>
+    </div>
+
+    <footer>
+      <span>© 2026 Oveja Negra Pamplona</span>
+      <span>Calle Irunlarrea 13B, 31008 Pamplona, Navarra</span>
+    </footer>
+  </div>
+</section>
+
+</body>
+</html>
